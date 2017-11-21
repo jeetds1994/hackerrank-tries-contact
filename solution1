@@ -1,0 +1,31 @@
+function check(input){
+        //remove number of commands
+       input.shift()
+        //create store of possible searches
+       let store = {}
+        
+       input.forEach(command => {
+        let splitCommand = command.split(" ")
+        let contact = splitCommand[1]       
+        //3 means add and 4 means find
+        if(splitCommand[0].length == 3){
+            //ADD
+            let word = ""
+            contact.split("").forEach(letter => {
+                word += letter
+                if(store[word]){
+                    store[word]++
+                }else{
+                    store[word] = 1
+                }
+            })
+        }else{
+            //FIND   
+            if(store[contact]){
+               console.log(store[contact])
+            }else{
+               console.log(0)
+            }           
+         }           
+       })        
+    }
